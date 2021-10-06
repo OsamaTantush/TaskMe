@@ -17,7 +17,7 @@ class TaskManager extends ChangeNotifier{
   //Create new tasks [Note]: tasks are organized by date ex: {'1/10/2030': [task1, task2, etc]..}
   void createNewTask({String title,String description,int priority,String category,DateTime date}){
     Task newTask = Task(title:title,description:description,priority:priority,category:category,date:date);
-    DateTime dateKey = DateTime(date.year, date.month, date.year);
+    DateTime dateKey = DateTime(date.year, date.month, date.day);
     if(!taskMap.containsKey(dateKey)) {taskMap[dateKey] = <Task>[];}
     taskMap[dateKey].add(newTask);
     Map<DateTime, List<Task>> sortedTaskMap = sortTaskMap(map:taskMap, sortKey:dateKey);
@@ -54,6 +54,23 @@ class TaskManager extends ChangeNotifier{
     filteredMap.clear();
     filteredMap.addAll(sortedMap);
     return filteredMap;
+  }
+
+  void markTaskAsDone(Task task){
+    task.bIsDone = true;
+    notifyListeners();
+  }
+
+  void deleteTask(Task task){
+    //remove any task alerts of this task & stop it's timer.
+    ///TODO..await implement
+
+    //delete task
+    DateTime dateKey = DateTime(task.date.year, task.date.month, task.date.day);
+    taskMap[dateKey].remove(task);
+    //check dateKey if became empty, then delete it.
+    if(taskMap[dateKey].isEmpty){taskMap.remove(dateKey);}
+    notifyListeners();
   }
 
 }

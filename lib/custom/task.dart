@@ -17,8 +17,8 @@ class Task{
     this.category,
     this.date,
     this.alertDateList,
-    this.bIsDone,
-    this.bIsArchived
+    this.bIsDone:false,
+    this.bIsArchived:false,
   });
 
 }

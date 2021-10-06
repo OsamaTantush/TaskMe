@@ -23,6 +23,7 @@ class TaskMe extends StatelessWidget{
           '/': (context) => Home(),
         },
         initialRoute: '/',
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

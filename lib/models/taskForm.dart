@@ -97,7 +97,7 @@ class _TaskForm extends State<TaskForm>{
                 await Future.delayed(Duration(milliseconds: 500), (){
                   if( !controllerMap['title']['textField'].text.isEmpty &&
                       !controllerMap['description']['textField'].text.isEmpty &&
-                      controllerMap['date']['dateTime'].isBefore(DateTime.now().add(Duration(minutes: 1)))
+                      controllerMap['date']['dateTime'].isAfter(DateTime.now().add(Duration(minutes: 1)))
                     ){
                       Provider.of<TaskManager>(context, listen: false).createNewTask(
                           title: controllerMap['title']['textField'].text,
@@ -106,6 +106,7 @@ class _TaskForm extends State<TaskForm>{
                           category: controllerMap['category']['text'],
                           date: controllerMap['date']['dateTime']
                       );
+                      Navigator.of(context).pop();
                   }
                   else{
                     setState(() {
@@ -214,14 +215,14 @@ class _TaskForm extends State<TaskForm>{
                       itemCount: 3,
                       initialRating: 1,
                       itemBuilder: (context, i) => Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.only(top:4.0, bottom:4.0),
                         child: Icon(
                           Icons.radio_button_checked, color: Colors.blue,
                         ),
                       ),
                       onRatingUpdate: (value){
                         setState(() {
-                          controllerMap['priority']['rate'] = value;
+                          controllerMap['priority']['rate'] = value.toInt();
                         });
                       },
                     ),

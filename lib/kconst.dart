@@ -4,3 +4,5 @@ final Color kBAccentG160 = Color.alphaBlend(Colors.indigoAccent, Colors.white).w
 const Color kDarkBlue = Color(0xff0c122b);
 final Color kDarkRed = Colors.red[700];
 const Color kDarkWhite  = Colors.white70;
+const kCardColor = Color(0xff211825);
+const kCardShadowColor = Colors.yellow;

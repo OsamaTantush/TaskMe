@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taskme/Providers/taskManager.dart';
 import 'package:taskme/kconst.dart';
+import 'package:taskme/models/taskView.dart';
 
 class CategoryTabBarView extends StatefulWidget{
   @override
@@ -69,9 +70,10 @@ class _CategoryTabBarView extends State<CategoryTabBarView> with SingleTickerPro
   Widget content(){
     return TabBarView(
       controller: tabController,
-      children: tabMap.values.map<ListView>((filter) =>
-        ListView(),
+      children: tabMap.values.map<TaskView>((filter) =>
+        TaskView(filter: filter),
       ).toList(),
     );
   }
+
 }

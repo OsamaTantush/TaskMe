@@ -84,26 +84,6 @@ class Home extends StatelessWidget{
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: CategoryTabBarView(),
       ),
-      // child: Column(
-      //   children: [
-      //     Padding(
-      //       padding: EdgeInsets.only(left:8, right:8),
-      //       child: CategoryTabBarView(),
-      //       // child: CategoryTabBar(
-      //       //   controller: tabController,
-      //       // ),
-      //     ),
-      //     SizedBox(height: 20),
-      //     // Expanded(
-      //     //   child: TabBarView(
-      //     //     controller: tabController,
-      //     //     children: Provider.of<DataProvider>(context).filterMap.values.map<TaskViewScreen>((filter) {
-      //     //       return TaskViewScreen(filter: filter);
-      //     //     }).toList(),
-      //     //   ),
-      //     // ),
-      //   ],
-      // ),
     );
   }
 
